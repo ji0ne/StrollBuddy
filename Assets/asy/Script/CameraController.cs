@@ -10,16 +10,13 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("DataManager");
-        Debug.Log(transform.position);
+        player = GameObject.Find("DataManager");        
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(player.transform.position);
-        Debug.Log(player);
-        Debug.Log(transform.position);
-        transform.position = new Vector3(-player.transform.position.x,player.transform.position.y,player.transform.position.z) + offSet;
+        Vector3 playerPos = player.transform.position;
+        transform.position = new Vector3(playerPos.x, transform.position.y, playerPos.z);
     }
 }
