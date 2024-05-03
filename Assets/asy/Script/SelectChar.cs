@@ -31,11 +31,11 @@ public class SelectChar : MonoBehaviour
 
     void OnDeSelect()
     {
-        animator.SetBool("run", false);
+        animator.SetBool("jump", false);
     }
 
     void OnSelect()
     {
-        animator.SetBool("run", true);
+        animator.SetBool("jump", true);
     }
 }
