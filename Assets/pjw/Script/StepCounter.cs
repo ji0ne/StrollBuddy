@@ -5,23 +5,22 @@ using TMPro;
 
 public class StepCounter : MonoBehaviour
 {
-    // 걸음 수를 저장할 변수
     private int stepCount = 0;
 
     // 자이로센서 값을 읽어올 때의 각도 변경 임계값
-    public float gyroThreshold = 1.0f;
+    public float gyroThreshold = 4.0f;
 
-    // 이전 자이로센서 각도를 저장할 변수
     private Vector3 previousRotation;
 
-    // UI에 걸음 수를 표시할 TextMeshPro Text 요소
     public TextMeshProUGUI stepCountText;
 
+    Vector3 deltaRotation;
     void Start()
     {
         Input.gyro.enabled = true;
         // 초기 자이로센서 각도 설정
         previousRotation = Input.gyro.rotationRateUnbiased;
+        StartCoroutine(StepCountUpdate());
     }
 
     void Update()
@@ -30,30 +29,34 @@ public class StepCounter : MonoBehaviour
         Vector3 currentRotation = Input.gyro.rotationRateUnbiased;
 
         // 각도 변화량 계산
-        Vector3 deltaRotation = currentRotation - previousRotation;
-
-        // X축 기준으로의 각도 변화가 일정 임계값 이상이면 걸음으로 간주
-        if (Mathf.Abs(deltaRotation.x) > gyroThreshold)
-        {
-            // 걸음 수 증가
-            stepCount++;
-
-            // 걸음 수를 화면에 표시
-            UpdateStepCountUI();
-        }
-
-        // 현재 자이로센서 각도를 이전 각도로 업데이트
+        deltaRotation = currentRotation - previousRotation;
+        
+        //현재 자이로 값을 이전 값에 할당(자이로값 업데이트)
         previousRotation = currentRotation;
     }
 
-    // UI에 걸음 수를 업데이트하는 함수
+    //코루틴 메서드로 빼서 0.5초 단위로만 걸음 측정하도록 함
+    IEnumerator StepCountUpdate()
+    {
+        while(true)
+        {
+            yield return new WaitForSecondsRealtime(0.3f);
+
+            // X축 기준으로의 각도 변화가 일정 임계값 이상이면 걸음으로 간주
+            if (Mathf.Abs(deltaRotation.x) > gyroThreshold)
+            {
+                stepCount++;
+                UpdateStepCountUI();
+            }
+            Debug.Log("코루틴테스트");
+        }
+    }
+
+
+    // UI 걸음 수 업데이트
     void UpdateStepCountUI()
     {
-        // TextMeshPro Text 요소가 존재하는 경우에만 업데이트
-        if (stepCountText != null)
-        {
-            // 걸음 수를 TextMeshPro Text에 표시
-            stepCountText.text = "Step Count: " + stepCount;
-        }
+        if (stepCountText != null) stepCountText.text = ""+stepCount;
+        
     }
 }
