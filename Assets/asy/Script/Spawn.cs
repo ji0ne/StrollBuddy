@@ -8,7 +8,7 @@ public class Spawn : MonoBehaviour
 
     public GameObject[] chars;
     static public GameObject player;
-    float speed = 1.0f;
+    float speed = 1.5f;
     Animator animator;
 
     void Start()
