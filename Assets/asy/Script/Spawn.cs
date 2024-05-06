@@ -15,6 +15,7 @@ public class Spawn : MonoBehaviour
     {
         Application.targetFrameRate = 60;
 
+        //currentAnimals에 저장되어있는 값을 이용해서 chars 배열에서 원하는 프리팹을 생성
         player = Instantiate(chars[(int)DataManager.instance.currentAnimals]);
         player.transform.position = transform.position;
 

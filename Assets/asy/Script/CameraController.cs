@@ -4,24 +4,7 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 public class CameraController : MonoBehaviour
-{
-    //GameObject player;
-    //public Vector3 offSet;
-    //Vector3 playerPos;
-
-    //void Start()
-    //{
-    //    //transform.position = offSet;
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    player = GameObject.FindWithTag("chars");
-    //    playerPos = player.transform.position;
-    //    transform.position = new Vector3(playerPos.x, transform.position.y, transform.position.z);
-    //}
-
+{ 
     public Transform target;
 
     public float smoothSpeed = 0.125f;
@@ -30,6 +13,7 @@ public class CameraController : MonoBehaviour
     void LateUpdate()
     {
         target = GameObject.FindWithTag("chars").transform;
+        //캐릭터 위치 - 카메라 위치해서 카메라의 위치를 지정해줌
         Vector3 desiredPosition = new Vector3(
             target.position.x - offset.x,
             offset.y,
@@ -37,7 +21,5 @@ public class CameraController : MonoBehaviour
             );
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
-
-        //transform.LookAt(target);
     }
 }
