@@ -14,5 +14,16 @@ public class SceneChanageManager : MonoBehaviour
     {
         SceneManager.LoadScene("Play");
     }
+    
+    public void ClickMiniGameButton()
+    {        
+        if(GameManager.gameCount > 0)
+        {
+            SceneManager.LoadScene("ArrowGame");
+        }else if(GameManager.gameCount <= 0)
+        {
+            Debug.Log("게임 횟수 없음");
+        }
+    }
 }
 
