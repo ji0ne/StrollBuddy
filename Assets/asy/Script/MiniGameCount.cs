@@ -20,6 +20,7 @@ public class MiniGameCount : MonoBehaviour
 
     void Update()
     {
+        gameCountText.GetComponent<TextMeshProUGUI>().text = GameManager.gameCount.ToString();
         sec += Time.deltaTime;
 
         if(sec >= 60f)
