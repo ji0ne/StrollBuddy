@@ -30,6 +30,6 @@ public class ArrowGenerator : MonoBehaviour
             Debug.Log("Ãæµ¹");
         }
 
-    }
+    } 
 
 }
