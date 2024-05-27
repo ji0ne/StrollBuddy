@@ -20,7 +20,7 @@ public class ArrowCreator : MonoBehaviour
         {
             this.delta = 0;
             GameObject go = Instantiate(arrowPrefab);
-            int px = Random.Range(-4, 4);
+            int px = Random.Range(-3, 4);
             go.transform.position = new Vector3(px, 7, 0);
         }
 
