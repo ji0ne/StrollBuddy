@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
     {
         target = GameObject.FindWithTag("chars").transform;
         //캐릭터 위치 - 카메라 위치해서 카메라의 위치를 지정해줌
-        Vector3 desiredPosition = new Vector3(
+        Vector3 desiredPosition = new Vector3( 
             target.position.x - offset.x,
             offset.y,
             target.position.z - offset.z + 1

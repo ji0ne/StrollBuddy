@@ -9,7 +9,10 @@ public class ConversationController : MonoBehaviour
 
     public void SelectConversation()
     {
-        int n = Random.Range(0,myConversation.Length);
-        ConversationManager.Instance.StartConversation(myConversation[n]);
+      if(GameManager.gameCount > 0)
+      {
+         int n = Random.Range(0, myConversation.Length);
+         ConversationManager.Instance.StartConversation(myConversation[n]);
+      }        
     }
 }
