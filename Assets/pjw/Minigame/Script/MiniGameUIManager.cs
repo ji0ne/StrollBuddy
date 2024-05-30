@@ -5,17 +5,17 @@ using TMPro;
 
 public class MiniGameUIManager : MonoBehaviour
 {
-   GameObject count;
-   int time;
+   GameObject countText;
 
     void Start()
     {
-      count = GameObject.Find("Count");       
-    }
+      countText = GameObject.Find("Count");
+   }
 
-    // Update is called once per frame
-    void Update()
+   // Update is called once per frame
+   void Update()
     {
-      
-    }
+      GameManager.time += Time.deltaTime;
+      countText.GetComponent<TextMeshProUGUI>().text = GameManager.time.ToString("F0");      
+   }
 }

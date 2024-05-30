@@ -4,32 +4,23 @@ using UnityEngine;
 
 public class ArrowGenerator : MonoBehaviour
 {
-    GameObject player;
+   public GameObject arrowPrefab;
+   //Prefab 변수 이름 지정할 때는 유니티에서 지정한 Prefab 이름과
+   //동일하게 적어줘야함
+   float span = 1.0f; //1.0f는 1초로 생각
+   float delta = 0;
 
-    private void Start()
-    {
-        this.player = GameObject.Find("player");
-    }
-    void Update()
-    {
-        transform.Translate(0, -0.015f, 0);
-
-        if (transform.position.y < -5.0f) Destroy(gameObject);
-
-        // 충돌 판정
-        Vector2 p1 = transform.position;              // 화살 중심 좌표
-        Vector2 p2 = this.player.transform.position;  // 플레이어 중심 좌표
-        Vector2 dir = p1 - p2;
-        float d = dir.magnitude;
-        float r1 = 0.3f;  // 화살 반경
-        float r2 = 0.7f;  // 플레이어 반경
-
-        if (d < r1 + r2)
-        {
-            Destroy(gameObject);
-            Debug.Log("충돌");
-        }
-
-    } 
-
+   void Update()
+   {
+      this.delta += Time.deltaTime;
+      //deltaTime은 프레임과 프레임 사이의 시간
+      //1초에 1000번 돌면 프레임과 프레임 사이의 시간은 0.001초
+      if (this.delta > this.span) //this.delta가 1초가 되면
+      {
+         this.delta = 0; //delta를 0으로 셋팅 -> 1초마다 계속 반복되게
+         GameObject go = Instantiate(arrowPrefab);      
+         int px = Random.Range(-3, 3);
+         go.transform.position = new Vector3(px, 7, 0);
+      }
+   }
 }
