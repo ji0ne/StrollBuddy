@@ -8,6 +8,7 @@ public class FurnitureManager : MonoBehaviour
     public static int s_likeability;
 
     enum furnitureKinds { closet, bed, dressingTable, chair, table, empty }
+    private bool[] furnitureRewarded = new bool[5]; // 보상이 주어진 상태를 추적하는 배열
 
     public void addLikeability()
     {
@@ -15,8 +16,6 @@ public class FurnitureManager : MonoBehaviour
         Debug.Log(s_likeability);
         rewardFurniture();
     }
-
-
 
     void rewardFurniture()
     {
@@ -30,24 +29,43 @@ public class FurnitureManager : MonoBehaviour
                 break;
 
             case furnitureKinds.closet:
-                Instantiate(furniturePrefabs[0], new Vector3(3, 2.5f, 3), Quaternion.identity);
+                if (!furnitureRewarded[(int)furnitureKinds.closet])
+                {
+                    Instantiate(furniturePrefabs[0], new Vector3(3, 2.5f, 3), Quaternion.identity);
+                    furnitureRewarded[(int)furnitureKinds.closet] = true;
+                }
                 break;
 
             case furnitureKinds.bed:
-                Instantiate(furniturePrefabs[1], new Vector3(0, 0, 0), Quaternion.identity);
+                if (!furnitureRewarded[(int)furnitureKinds.bed])
+                {
+                    Instantiate(furniturePrefabs[1], new Vector3(0, 0, 0), Quaternion.identity);
+                    furnitureRewarded[(int)furnitureKinds.bed] = true;
+                }
                 break;
 
-         
             case furnitureKinds.dressingTable:
-                Instantiate(furniturePrefabs[2], new Vector3(-3, 0, 2.5f), Quaternion.identity);
+                if (!furnitureRewarded[(int)furnitureKinds.dressingTable])
+                {
+                    Instantiate(furniturePrefabs[2], new Vector3(-3, 0, 2.5f), Quaternion.identity);
+                    furnitureRewarded[(int)furnitureKinds.dressingTable] = true;
+                }
                 break;
 
             case furnitureKinds.chair:
-                Instantiate(furniturePrefabs[3], new Vector3(-1.5f, 0.8f, -2.5f), Quaternion.identity);
+                if (!furnitureRewarded[(int)furnitureKinds.chair])
+                {
+                    Instantiate(furniturePrefabs[3], new Vector3(-1.5f, 0.8f, -2.5f), Quaternion.identity);
+                    furnitureRewarded[(int)furnitureKinds.chair] = true;
+                }
                 break;
 
             case furnitureKinds.table:
-                Instantiate(furniturePrefabs[4], new Vector3(-3, 0, -8.5f), Quaternion.identity);
+                if (!furnitureRewarded[(int)furnitureKinds.table])
+                {
+                    Instantiate(furniturePrefabs[4], new Vector3(-3, 0, -8.5f), Quaternion.identity);
+                    furnitureRewarded[(int)furnitureKinds.table] = true;
+                }
                 break;
 
             default:
@@ -61,27 +79,22 @@ public class FurnitureManager : MonoBehaviour
         if (likeability >= 50)
         {
             return furnitureKinds.table;
-
         }
         else if (likeability >= 40)
         {
             return furnitureKinds.chair;
-            
         }
         else if (likeability >= 30)
         {
             return furnitureKinds.dressingTable;
-           
         }
         else if (likeability >= 20)
         {
             return furnitureKinds.bed;
-            
         }
         else if (likeability >= 10)
         {
             return furnitureKinds.closet;
-            
         }
         else
         {
