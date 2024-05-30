@@ -7,19 +7,19 @@ public class SceneChanageManager : MonoBehaviour
 {
     public void ClickCharButton()
     {
-        SceneManager.LoadScene("Select");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Select");
     }
 
     public void ClickStartButton()
     {
-        SceneManager.LoadScene("Play");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Play");
     }
     
     public void ClickMiniGameButton()
     {        
         if(GameManager.gameCount > 0)
         {
-            SceneManager.LoadScene("ArrowGame");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("ArrowGame");
         }else if(GameManager.gameCount <= 0)
         {
             Debug.Log("게임 횟수 없음");
