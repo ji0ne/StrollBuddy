@@ -7,6 +7,8 @@ public class FurnitureManager : MonoBehaviour
     public GameObject[] furniturePrefabs;
     public static int s_likeability;
 
+    public RectTransform imageTransform; // 2D 이미지의 RectTransform을 참조
+
     enum furnitureKinds { closet, bed, dressingTable, chair, table, empty }
     private bool[] furnitureRewarded = new bool[5]; // 보상이 주어진 상태를 추적하는 배열
 
@@ -15,6 +17,7 @@ public class FurnitureManager : MonoBehaviour
         s_likeability++;
         Debug.Log(s_likeability);
         rewardFurniture();
+        UpdateImageWidth(); // 이미지 크기 업데이트
     }
 
     void rewardFurniture()
@@ -99,6 +102,15 @@ public class FurnitureManager : MonoBehaviour
         else
         {
             return furnitureKinds.empty;
+        }
+    }
+
+    void UpdateImageWidth()
+    {
+        if (imageTransform != null)
+        {
+            // 가로 길이를 증가시키기 위해 현재 Width에 s_likeability를 더함
+            imageTransform.sizeDelta = new Vector2(imageTransform.sizeDelta.x + s_likeability, imageTransform.sizeDelta.y);
         }
     }
 }

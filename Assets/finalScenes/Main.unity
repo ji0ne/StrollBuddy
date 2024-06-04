@@ -781,6 +781,7 @@ MonoBehaviour:
   - {fileID: 1671440713644138, guid: 58641b72662acc545bc903dde3ef9df6, type: 3}
   - {fileID: 1810091130954080, guid: 640a9ba4163c4ab4f8fb70168dbac2ac, type: 3}
   - {fileID: 1636173417214098, guid: e7936f5bc587a5f49a75ec14255163a3, type: 3}
+  imageTransform: {fileID: 1629547229}
 --- !u!1 &1067048541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,7 +1162,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 80}
+  m_SizeDelta: {x: 10, y: 80}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1629547230
 MonoBehaviour:
