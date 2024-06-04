@@ -16,7 +16,7 @@ public class ArrowController : MonoBehaviour
    void Update()
    {
       // 프레임마다 등속으로 낙하시킨다
-      transform.Translate(0, -0.12f, 0);
+      transform.Translate(0, -0.02f, 0);
 
       // 화면 밖으로 나오면 오브젝트를 소멸시킨다
       if (transform.position.y < -5.0f)
