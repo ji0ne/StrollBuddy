@@ -12,7 +12,7 @@ public class SceneChanageManager : MonoBehaviour
 
     public void ClickStartButton()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Play");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
     }
     
     public void ClickMiniGameButton()
@@ -24,6 +24,11 @@ public class SceneChanageManager : MonoBehaviour
         {
             Debug.Log("게임 횟수 없음");
         }
+    }
+
+    public void ClickStrollButton()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Stroll");
     }
 }
 

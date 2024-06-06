@@ -32,8 +32,9 @@ public class GameDirector : MonoBehaviour
                 GameManager.maxCount = float.Parse(timeString);
                 GameManager.conversationCount += 1;
                 GameManager.time = 0;
+                Time.timeScale = 1;
             }
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Play"); // 한 번만 호출하도록 수정
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Main"); // 한 번만 호출하도록 수정
             GameManager.time = 0;
             Time.timeScale = 1;
         }

@@ -4,9 +4,9 @@ using UnityEngine;
 using TMPro;
 
 public class MiniGameCount : MonoBehaviour
-{
-    GameObject gameCountText;
-    GameObject MiniGameTime;
+{ 
+    GameObject gameCountText; //미니게임 횟수
+    GameObject MiniGameTime; //미니게임 횟수 증가 시간
     int min;
     float sec;
 

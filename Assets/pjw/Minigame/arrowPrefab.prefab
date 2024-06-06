@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5054769226958422945}
   - component: {fileID: 2795768323037357083}
-  - component: {fileID: -4934540817221342112}
+  - component: {fileID: 4768850015149823097}
   m_Layer: 0
   m_Name: arrowPrefab
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4934540817221342112
+--- !u!114 &4768850015149823097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
